@@ -28,7 +28,9 @@
             </div>
           </li>
         </ul>
-        <div class="favorite">
+        <div class="favorite" @click="toggleFavorite">
+          <span class="icon-favorite" :class="{'active': favorite}"></span>
+          <span class="text">{{favoriteText}}</span>
         </div>
       </div>
       <split></split>
@@ -59,9 +61,7 @@
       <div class="info">
         <h1 class="title border-1px">商家信息</h1>
         <ul>
-          <li v-for="info in seller.infos" class="info-item">
-            {{info}}
-          </li>
+          <li v-for="info in seller.infos" class="info-item">{{info}}</li>
         </ul>
       </div>
     </div>
@@ -77,6 +77,16 @@
     props: {
       seller: {
         type: Object
+      }
+    },
+    data () {
+      return {
+        favorite: false
+      }
+    },
+    computed: {
+      favoriteText () {
+        return this.favorite ? '已收藏' : '收藏'
       }
     },
     created () {
@@ -123,6 +133,12 @@
             }
           })
         }
+      },
+      toggleFavorite (event) {
+        if (!event._constructed) {
+          return
+        }
+        this.favorite = !this.favorite
       }
     },
     components: {
@@ -206,7 +222,31 @@
         }
       }
 
-      .favorite {}
+      .favorite {
+        position: absolute;
+        width: 50px;
+        top: 18px;
+        right: 18px;
+        text-align: center;
+
+        .icon-favorite {
+          display: block;
+          margin-bottom: 4px;
+          line-height: 24px;
+          font-size: 24px;
+          color: #d4d6d9;
+
+          &.active {
+            color: rgb(240, 20, 20);
+          }
+        }
+
+        .text {
+          line-height: 10px;
+          font-size: 10px;
+          color: rgb(77, 85, 93);
+        }
+      }
     }
 
     .bulletin {
