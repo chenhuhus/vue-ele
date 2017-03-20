@@ -2,6 +2,11 @@
 
 > ele app
 
+<div>项目截图</div>
+<div><img src="pic/pic1.png"></div>
+<div><img src="pic/pic2.png"></div>
+<div><img src="pic/pic3.png"></div>
+
 ## Build Setup
 
 ``` bash
