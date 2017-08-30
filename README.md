@@ -6,6 +6,7 @@
 <div><img src="pic/pic1.png"></div>
 <div><img src="pic/pic2.png"></div>
 <div><img src="pic/pic3.png"></div>
+<div><img src="pic/vue.gif"></div>
 
 ## Build Setup
 
